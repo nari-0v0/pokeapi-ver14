@@ -1,26 +1,237 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* font */
+@font-face {
+    font-family: 'NeoDunggeunmo';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.3/NeoDunggeunmo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'NeoDunggeunmo', system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+ul {
+    list-style: none;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background: #f6f6ff;
+    color: #111;
+    font-family: inherit;
+}
+
+/* top bars */
+.top-red {
+    background: #e60000;
+    height: 60px;
+}
+
+.top-black {
+    background: #000;
+    color: #fff;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 4px;
+}
+
+/* container */
+.container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 24px 16px;
+}
+
+/* title */
+.main-title {
+    text-align: center;
+    margin: 12px 0 20px;
+    font-size: 18px;
+    color: #111;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.main-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background: #000;
+}
+
+
+/* grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+    justify-items: center;
+}
+
+/* 리스트 마커 제거 (중첩 빼기) */
+.grid>li {
+    list-style: none;
+}
+
+.grid>li::marker {
+    content: '';
+}
+
+/* card */
+.card {
+    display: flex;
+    position: relative;
+    background: #fff;
+    border-radius: 20px;
+    padding: 24px 12px 18px;
+    text-align: center;
+    box-shadow:
+        0 0 0 3px #000,
+        0 6px 0 0 #000;
+    transition: transform .12s ease, box-shadow .12s ease;
+    width: 200px;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.card:hover {
+    transform: scale(1.1);
+
+}
+
+.card img {
+    display: block;
+    /* 추가 */
+    margin: 0 auto 12px;
+    /* 가운데 정렬 */
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+.card-name {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* ===== detail page ===== */
+.detail-card {
+    max-width: 420px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 20px;
+    padding: 32px 28px 40px;
+    text-align: center;
+    box-shadow:
+        0 0 0 3px #000,
+        0 8px 0 0 #000;
+}
+
+.detail-name {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.detail-desc {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 24px;
+    white-space: pre-line;
+}
+
+.detail-img {
+    width: 280px;
+    height: 280px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    margin: 0 auto 28px;
+    display: block;
+}
+
+/* ---- flip card ---- */
+.flip-wrap {
+    perspective: 1200px;
+    width: 240px;
+    height: 280px;
+    margin: 0 auto 28px;
+    position: relative;
+}
+
+.flip-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform .6s cubic-bezier(.4, .2, .2, 1);
+}
+
+.flip-inner.is-back {
+    transform: rotateY(180deg);
+}
+
+.flip-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.flip-face img {
+    width: 280px;
+    height: 280px;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+.flip-back {
+    transform: rotateY(180deg);
+}
+
+/* 버튼 */
+.btn-flip {
+    display: inline-block;
+    padding: 10px 26px;
+    background: #ff4d6d;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 0 #000;
+    transition: transform .1s ease, box-shadow .1s ease;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-flip:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #000;
+}
+
+.detail-desc {
+    font-size: 16px;
+    line-height: 1.45;
+    margin: 24px 0;
+    white-space: pre-line;
+    padding: 0 12px;
 }

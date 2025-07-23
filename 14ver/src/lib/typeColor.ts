@@ -1,0 +1,21 @@
+// src/lib/typeColor.ts
+export const typeColor: Record<string, string> = {
+    fire: 'bg-orange-500',
+    water: 'bg-sky-500',
+    grass: 'bg-green-500',
+    electric: 'bg-yellow-400',
+    psychic: 'bg-pink-500',
+    ice: 'bg-cyan-400',
+    dragon: 'bg-indigo-500',
+    dark: 'bg-zinc-700',
+    fairy: 'bg-rose-400',
+    fighting: 'bg-red-600',
+    flying: 'bg-violet-400',
+    poison: 'bg-purple-500',
+    ground: 'bg-amber-700',
+    rock: 'bg-stone-500',
+    bug: 'bg-lime-500',
+    ghost: 'bg-indigo-700',
+    steel: 'bg-slate-500',
+    normal: 'bg-gray-400',
+};
