@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* font */
+/* ===================== 폰트 설정 ===================== */
 @font-face {
     font-family: 'NeoDunggeunmo';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.3/NeoDunggeunmo.woff') format('woff');
@@ -10,7 +10,7 @@
     font-style: normal;
 }
 
-/* reset */
+/* ===================== 리셋 ===================== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -28,7 +28,7 @@ body {
     font-family: inherit;
 }
 
-/* top bars */
+/* ===================== 상단 바 ===================== */
 .top-red {
     background: #e60000;
     height: 60px;
@@ -46,14 +46,39 @@ body {
     letter-spacing: 4px;
 }
 
-/* container */
+/* ===================== 레이아웃 / 컨테이너 ===================== */
 .container {
     max-width: 1080px;
     margin: 0 auto;
     padding: 24px 16px;
 }
 
-/* title */
+.nav-bar {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-link {
+    font-size: 16px;
+    color: #111;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: #ff4d6d;
+}
+
+.nav-sep {
+    border: 0;
+    border-bottom: 2px dotted #000;
+    margin: 8px 0 16px;
+}
+
+/* ===================== 섹션 타이틀 ===================== */
 .main-title {
     text-align: center;
     margin: 12px 0 20px;
@@ -74,8 +99,35 @@ body {
     background: #000;
 }
 
+/* ===================== 검색 폼 ===================== */
+.search-form {
+    margin-left: auto;
+    display: flex;
+    gap: 6px;
+}
 
-/* grid */
+.search-input {
+    padding: 6px 10px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    width: 140px;
+}
+
+.search-btn {
+    padding: 6px 10px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer;
+    box-shadow: 0 2px 0 #000;
+}
+
+.search-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 0 #000;
+}
+
+/* ===================== 그리드 & 카드 ===================== */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -83,7 +135,6 @@ body {
     justify-items: center;
 }
 
-/* 리스트 마커 제거 (중첩 빼기) */
 .grid>li {
     list-style: none;
 }
@@ -92,36 +143,31 @@ body {
     content: '';
 }
 
-/* card */
 .card {
-    display: flex;
     position: relative;
-    background: #fff;
-    border-radius: 20px;
-    padding: 24px 12px 18px;
-    text-align: center;
-    box-shadow:
-        0 0 0 3px #000,
-        0 6px 0 0 #000;
-    transition: transform .12s ease, box-shadow .12s ease;
-    width: 200px;
-    overflow: hidden;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 200px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 24px 12px 28px;
+    /* 버튼 안 잘리게 아래 여유 */
+    text-align: center;
+    box-shadow: 0 0 0 3px #000, 0 6px 0 0 #000;
+    /* 테두리 + 아래 그림자 */
+    transition: transform .12s ease, box-shadow .12s ease;
+    overflow: visible;
 }
-
 
 .card:hover {
     transform: scale(1.1);
-
 }
 
 .card img {
     display: block;
-    /* 추가 */
     margin: 0 auto 12px;
-    /* 가운데 정렬 */
     width: 96px;
     height: 96px;
     object-fit: contain;
@@ -131,19 +177,53 @@ body {
 .card-name {
     font-size: 18px;
     font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
 }
 
-/* ===== detail page ===== */
+/* 찜 버튼 (카드 하단) */
+.fav-btn {
+    margin-top: 8px;
+    padding: 6px 10px;
+    background: #ff4d6d;
+    color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 0 #000;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.fav-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 0 #000;
+}
+
+.fav-star {
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    line-height: 1;
+    font-size: 18px;
+    color: #ffc400;
+    text-shadow: 0 1px 0 #000;
+}
+
+.fav-star.off {
+    color: #999;
+}
+
+/* ===================== 상세 페이지 ===================== */
 .detail-card {
-    max-width: 420px;
+    max-width: 620px;
     margin: 40px auto;
     background: #fff;
     border-radius: 20px;
     padding: 32px 28px 40px;
     text-align: center;
-    box-shadow:
-        0 0 0 3px #000,
-        0 8px 0 0 #000;
+    box-shadow: 0 0 0 3px #000, 0 8px 0 0 #000;
 }
 
 .detail-name {
@@ -153,11 +233,13 @@ body {
 
 .detail-desc {
     font-size: 16px;
-    line-height: 1.4;
-    margin-bottom: 24px;
+    line-height: 1.45;
+    margin: 24px 0;
     white-space: pre-line;
+    padding: 0 12px;
 }
 
+/* 기본 상세 이미지 크기 */
 .detail-img {
     width: 280px;
     height: 280px;
@@ -167,11 +249,12 @@ body {
     display: block;
 }
 
-/* ---- flip card ---- */
+/* ===================== 3D 뒤집기 카드 ===================== */
 .flip-wrap {
     perspective: 1200px;
-    width: 240px;
-    height: 280px;
+    width: 420px;
+    height: 420px;
+    /* 필요시 원하는 크기로 조정 */
     margin: 0 auto 28px;
     position: relative;
 }
@@ -200,8 +283,10 @@ body {
 }
 
 .flip-face img {
-    width: 280px;
-    height: 280px;
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    max-height: 500px;
     object-fit: contain;
     image-rendering: pixelated;
 }
@@ -210,7 +295,7 @@ body {
     transform: rotateY(180deg);
 }
 
-/* 버튼 */
+/* 뒤집기 버튼 */
 .btn-flip {
     display: inline-block;
     padding: 10px 26px;
@@ -226,12 +311,4 @@ body {
 .btn-flip:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 0 #000;
-}
-
-.detail-desc {
-    font-size: 16px;
-    line-height: 1.45;
-    margin: 24px 0;
-    white-space: pre-line;
-    padding: 0 12px;
 }

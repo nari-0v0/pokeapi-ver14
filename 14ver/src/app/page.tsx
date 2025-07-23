@@ -7,7 +7,6 @@ export default async function PokemonListPage() {
 
   return (
     <main className="container">
-      <p className="main-title"><Link href="/">메인</Link></p>
       <ul className="grid">
         {list.map((p) => (
           <li key={p.id}>

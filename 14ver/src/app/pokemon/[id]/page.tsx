@@ -15,7 +15,6 @@ export default async function PokemonDetailPage({ params }: { params: { id: stri
 
     return (
         <main className="container">
-            <p className="main-title"><Link href="/">메인</Link></p>
             <FlipCard
                 name={p.koName}
                 desc={p.koFlavor}

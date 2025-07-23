@@ -1,6 +1,7 @@
 
 'use client';
 import { useState } from 'react';
+import FavStar from './FavStar';
 
 type Props = { name: string; desc: string; frontImg: string; backImg: string };
 
@@ -9,7 +10,9 @@ export default function FlipCard({ name, desc, frontImg, backImg }: Props) {
 
     return (
         <div className="detail-card">
-            <h1 className="detail-name">{name}</h1>
+            <h1 className="detail-name">{name}
+                <FavStar id={frontImg.match(/\/(\d+)\.png$/)?.[1] ?? ''} size={26} />
+            </h1>
 
             {/* 이미지(앞/뒤)만 뒤집기 */}
             <div className="flip-wrap">
